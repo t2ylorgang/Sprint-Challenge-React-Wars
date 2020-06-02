@@ -1,23 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
-import Character from './components/Character';
-import axios from 'axios';
-import { CardDeck } from 'reactstrap';
+import Character from './components/Character'; //import character component
+import axios from 'axios'; //import axios
+import { CardDeck } from 'reactstrap'; //allows us to display multiple cards, from reactstrap website
 
 const App = () => {
   const [data, setData] = useState({ characters: [] });
 
-  useEffect(() => {
+  useEffect(() => { //filling in characters array with people
     (async () => {
-      try {
-        const {data: {results}} = await axios('https://swapi.py4e.com/api/people/?page=1')
-        console.dir(results, {depth: null});
+      try { //skip for loop, get the whole page, get rid of data i dont need
+        const {data: {results}} = await axios('https://swapi.py4e.com/api/people/?page=1'); //use destructure assignment to get data we want, and get rid of data we dont. results is what fills in characters array.
+        console.dir(results, {depth: null}); //used to see ALL data
         setData({characters: results});
       } catch(err) {
         console.error(`Unable to fetch data from swapi: ${err}`);
       }
-    })();
-  }, []);
+    })(); //doesnt get called over and over again, only called when mounted
+  }, []); //doesnt get called over and over again, only called when mounted
 
   return (
     <div className="App">

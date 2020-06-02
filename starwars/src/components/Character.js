@@ -1,9 +1,10 @@
 // Write your Character component here
-import React, { useState } from 'react';
+import React, { useState } from 'react'; //import useState for toggle feature, etc
+
 import {
   Card, Collapse, CardBody,
   CardTitle, CardSubtitle, Button,
-  ListGroup, ListGroupItem
+  ListGroup, ListGroupItem //all the reactStrap components to be used in component
 } from 'reactstrap';
 
 const Character = (props) => {
